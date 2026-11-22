@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Bite Pachuca — Comida Fit, Fresca y Refinada</title>
+  <meta name="description" content="Bowls, chapatas artesanales, club sándwich integral, tacos dorados y 12 aguas naturales 500 ml en Pachuca. Pedidos por WhatsApp: 771 220 7194.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR DE ANUNCIO -->
+  <div class="top-announcement" role="region" aria-label="Aviso de servicio en Pachuca">
+    <div class="container announcement-inner">
+      <p><strong>Green Bite Pachuca</strong> • Entrega puntual Lun–Vie en oficinas y consultorios</p>
+      <a class="announcement-wa" href="https://wa.me/527712207194?text=Hola%20Green%20Bite,%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">
+        WhatsApp: 771 220 7194
+      </a>
+    </div>
+  </div>
+
+  <!-- NAVBAR STICKY GLASSMORPHISM -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-inner">
+      <a class="brand-lockup" href="#inicio" aria-label="Inicio Green Bite">
+        <img class="brand-logo" src="assets/logo.jpeg" alt="Logotipo circular Green Bite">
+        <div class="brand-text">
+          <span class="brand-name">Green Bite</span>
+          <span class="brand-tagline">Quiet Wellness • Pachuca</span>
+        </div>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#duo-builder">Armar Dúo</a>
+        <a href="#menu">Menú</a>
+        <a href="#aguas">12 Aguas</a>
+        <a href="#promos">Green Pass</a>
+        <a href="#campana">Campaña</a>
+        <a href="#faq">Dudas</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-cart-trigger" id="openCartBtn" aria-label="Abrir mi pedido">
+          <span class="cart-icon" aria-hidden="true">🛍️</span>
+          <span class="cart-label">Mi Pedido</span>
+          <span class="cart-badge" id="navCartCount">0</span>
+        </button>
+
+        <button type="button" class="hamburger-btn" id="openMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENÚ MÓVIL / TABLET DESLIZABLE -->
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer-head">
+      <div class="brand-lockup">
+        <img class="brand-logo" src="assets/logo.jpeg" alt="Green Bite">
+        <span class="brand-name">Green Bite</span>
+      </div>
+      <button type="button" class="drawer-close" id="closeMenuBtn" aria-label="Cerrar menú">✕</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="#duo-builder" class="mobile-link">Armar Workday Dúo en 2 Toques</a>
+      <a href="#menu" class="mobile-link">Menú de Alimentos ($50 – $85)</a>
+      <a href="#aguas" class="mobile-link">12 Aguas de Sabor Naturales ($25)</a>
+      <a href="#promos" class="mobile-link">Green Pass Semanal &amp; Club</a>
+      <a href="#campana" class="mobile-link">Galería Publicitaria Nano Banana</a>
+      <a href="#adn" class="mobile-link">Envases, Cobertura &amp; PDFs</a>
+      <a href="#faq" class="mobile-link">Preguntas Frecuentes</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <a class="btn btn-primary btn-full" href="https://wa.me/527712207194?text=Hola%20Green%20Bite,%20quiero%20información%20del%20menú%20de%20hoy." target="_blank" rel="noopener">
+        Pedir por WhatsApp: 771 220 7194
+      </a>
+    </div>
+  </aside>
+
+  <main id="inicio">
+    <!-- HERO SECTION EDITORIAL FOTORREALISTA ANIMADO -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-badges-row">
+            <span class="live-status-pill"><span class="live-dot" aria-hidden="true"></span> Cocina abierta hoy • Pachuca</span>
+            <span class="eyebrow-pill">Fit, Fresco y Refinado</span>
+          </div>
+          <h1 class="hero-title">Tu comida,<br><em>más verde</em><br>todos los días.</h1>
+          <p class="hero-subtitle">
+            Comida real y abundante en proteína y aguacate Hass, entregada con higiene impecable en tus <strong>envases favoritos de Green Bite</strong> para seguir rindiendo toda la tarde sin pesadez.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#duo-builder" class="btn btn-primary btn-lg btn-sheen">Armar mi Dúo en 2 Toques</a>
+            <button type="button" class="btn btn-wa-hero btn-lg js-smart-wa-cta">
+              <svg class="wa-svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.8 14.08c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.15.11-1.85-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.84 2.06.92 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.07 1.31 2.37 1.46.3.15.47.12.65-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.96.3.15.5.22.57.35.07.12.07.72-.17 1.4z"/></svg>
+              Ordenar WhatsApp: 771 220 7194
+            </button>
+          </div>
+
+          <ul class="hero-guarantees" aria-label="Garantías de frescura e higiene">
+            <li><span class="check-dot" aria-hidden="true">✓</span><span>El vasito de aderezo siempre viaja <strong>por fuera del bowl</strong></span></li>
+            <li><span class="check-dot" aria-hidden="true">✓</span><span><strong>12 Aguas de Sabor Naturales 500 ml</strong> en botella PET tapa negra ($25 c/u)</span></li>
+            <li><span class="check-dot" aria-hidden="true">✓</span><span>Precios directos <strong>$25 a $85 MXN</strong> y ahorro automático en Dúos</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-collage" id="heroCollage">
+          <div class="hero-photo-primary" data-parallax="10">
+            <img src="assets/food_bowl_pollo.jpg" alt="Bowl PET transparente con pechuga de pollo asada, aguacate y aderezo por fuera">
+            <div class="hero-photo-caption">
+              <strong>Bowl PET Pollo &amp; Aguacate</strong>
+              <span>$65 MXN</span>
+            </div>
+          </div>
+
+          <div class="hero-photo-float hero-float-bottle" data-parallax="-18">
+            <img src="assets/water_mango_maracuya.jpg" alt="Botella PET 500 ml Mango Maracuyá">
+            <div class="hero-float-pill">
+              <strong>Mango Maracuyá</strong>
+              <span>500 ml • $25</span>
+            </div>
+          </div>
+
+          <div class="hero-photo-float hero-float-chapata" data-parallax="16">
+            <img src="assets/food_chapata_pavo.jpg" alt="Chapata de pavo en corte diagonal sobre tabla mármol y madera">
+            <div class="hero-float-pill hero-float-pill-dark">
+              <strong>Chapatas $65</strong>
+              <span>Tabla Mármol-Madera</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CINTILLO EDITORIAL ANIMADO (MARQUEE TICKER) -->
+      <div class="editorial-marquee" aria-label="Resumen oficial de líneas y precios Green Bite">
+        <div class="marquee-track">
+          <div class="marquee-group">
+            <span>🥗 Bowls &amp; Ensaladas <strong>$65 MXN</strong></span>
+            <span>🥖 Chapatas de la Casa <strong>$65 MXN</strong></span>
+            <span>🥪 Club Sándwich + Papas <strong>$85 MXN</strong></span>
+            <span>🌮 Tacos Dorados Crujientes <strong>$50 MXN</strong></span>
+            <span>🥤 12 Aguas Naturales 500 ml <strong>$25 MXN</strong></span>
+            <span>✨ Workday Dúos ahorras <strong>$5</strong></span>
+            <span>🏢 Office Drop: <strong>Envío Gratis 3+ pedidos</strong></span>
+            <span>📲 WhatsApp Directo: <strong>771 220 7194</strong></span>
+          </div>
+          <div class="marquee-group" aria-hidden="true">
+            <span>🥗 Bowls &amp; Ensaladas <strong>$65 MXN</strong></span>
+            <span>🥖 Chapatas de la Casa <strong>$65 MXN</strong></span>
+            <span>🥪 Club Sándwich + Papas <strong>$85 MXN</strong></span>
+            <span>🌮 Tacos Dorados Crujientes <strong>$50 MXN</strong></span>
+            <span>🥤 12 Aguas Naturales 500 ml <strong>$25 MXN</strong></span>
+            <span>✨ Workday Dúos ahorras <strong>$5</strong></span>
+            <span>🏢 Office Drop: <strong>Envío Gratis 3+ pedidos</strong></span>
+            <span>📲 WhatsApp Directo: <strong>771 220 7194</strong></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONSTRUCTOR RÁPIDO WORKDAY DÚO EN 2 TOQUES -->
+    <section class="section section-sage-light" id="duo-builder">
+      <div class="container">
+        <div class="duo-builder-box reveal-on-scroll">
+          <div class="duo-builder-header">
+            <div>
+              <span class="section-kicker">Pedido Express para Oficina y Consultorio</span>
+              <h2 class="section-title duo-title">Arma tu Workday Dúo en 2 Toques</h2>
+            </div>
+            <div class="duo-live-summary">
+              <span>Ahorras $5 vs compra individual</span>
+              <strong class="price-pill" id="duoBuilderPrice">$85 MXN</strong>
+            </div>
+          </div>
+
+          <div class="duo-steps-grid">
+            <div class="duo-step-block">
+              <h3>1. Elige tu platillo principal</h3>
+              <div class="duo-dish-options" id="duoDishOptions">
+                <!-- Renderizado dinámicamente por app.js -->
+              </div>
+            </div>
+
+            <div class="duo-step-block">
+              <h3>2. Elige tu Agua de Sabor 500 ml incluida</h3>
+              <div class="duo-flavor-grid" id="duoFlavorGrid">
+                <!-- Renderizado dinámicamente por app.js -->
+              </div>
+            </div>
+          </div>
+
+          <div class="duo-builder-footer">
+            <p class="duo-selected-text" id="duoSelectedSummary">Seleccionado: <strong>Dúo Bowl de Pollo + Agua Fresa Kiwi</strong></p>
+            <div class="duo-footer-actions">
+              <button type="button" class="btn btn-primary btn-lg btn-sheen" id="addBuiltDuoBtn">
+                + Agregar Workday Dúo ($85 MXN)
+              </button>
+              <button type="button" class="btn btn-wa-outline btn-lg" id="directDuoWaBtn">
+                Pedir este Dúo por WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENÚ INTERACTIVO DE ALIMENTOS (4 LÍNEAS) -->
+    <section class="section section-cream" id="menu">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Menú Oficial Directo • Las 4 Líneas</span>
+          <h2 class="section-title">Elige tu platillo individual o en Dúo con Agua</h2>
+          <p class="section-lead">
+            Mantenemos nuestros precios directos y porciones generosas. Selecciona <strong>En Dúo (+ Agua de Sabor 500 ml)</strong> dentro de cualquier tarjeta para ahorrar $5 automáticamente en tu bebida.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Filtrar platillos por categoría">
+          <button type="button" class="filter-btn active" data-food-filter="all">Todos los Platillos (8)</button>
+          <button type="button" class="filter-btn" data-food-filter="bowls">Bowls &amp; Ensaladas ($65)</button>
+          <button type="button" class="filter-btn" data-food-filter="chapatas">Chapatas de la Casa ($65)</button>
+          <button type="button" class="filter-btn" data-food-filter="club">Club Sándwich ($85)</button>
+          <button type="button" class="filter-btn" data-food-filter="comfort">Tacos &amp; Comfort ($50–$65)</button>
+        </div>
+
+        <div class="menu-grid" id="foodMenuGrid">
+          <!-- Renderizado dinámicamente por app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- COLECCIÓN DE 12 AGUAS DE SABOR NATURALES 500 ML -->
+    <section class="section section-sage" id="aguas">
+      <div class="container">
+        <div class="waters-hero-grid">
+          <div class="waters-hero-text">
+            <span class="section-kicker kicker-light">Botella Cilíndrica PET 500 ml • Tapa Negra</span>
+            <h2 class="section-title title-light">12 Aguas de Sabor Naturales</h2>
+            <div class="price-pill price-pill-xl">$25 MXN c/u</div>
+            <p class="waters-lead">
+              Elaboradas diariamente en tres colecciones para acompañar tu jornada o disfrutar por separado. Etiquetas limpias impresas y transparencia total sobre nuestros ingredientes reales. Haz clic o pasa el cursor sobre cualquier sabor para verlo en <strong>Vista 3D de Catálogo</strong>.
+            </p>
+            <div class="honest-declaration" role="note">
+              <strong>Transparencia Honesta Green Bite:</strong> Nuestras aguas <strong>sí contienen azúcar</strong>: están preparadas con <em>base natural de fruta o semilla, azúcar y agua purificada • Sin conservadores artificiales</em> (mantener en refrigeración y agitar antes de tomar).
+            </div>
+          </div>
+
+          <div class="waters-hero-media" id="watersHeroStage">
+            <div class="waters-stage-card" data-3d-tilt>
+              <div class="waters-stage-top">
+                <span class="waters-stage-badge" id="watersHeroBadge">Vista 3D de Catálogo • Mango Maracuyá ($25 MXN)</span>
+                <button type="button" class="waters-poster-chip js-open-lightbox" data-poster-index="4" aria-label="Ampliar Póster de 12 Aguas de Sabor en pantalla completa">
+                  <img src="assets/poster_p5_aguas.png" alt="Miniatura póster catálogo de aguas">
+                  <span>Ver Póster ⤢</span>
+                </button>
+              </div>
+              <div class="waters-stage-visual">
+                <img id="watersHeroPreviewImg" class="waters-stage-bottle" src="assets/water_mango_maracuya.jpg" alt="Vista 3D de catálogo Agua de sabor Mango Maracuyá 500 ml">
+                <img class="waters-stage-lineup js-open-lightbox" data-poster-index="4" src="assets/poster_p5_aguas.png" alt="Catálogo publicitario Página 5: 12 Aguas de Sabor Naturales 500 ml" title="Clic para ampliar el póster del catálogo">
+              </div>
+              <div class="waters-stage-actions">
+                <button type="button" class="btn btn-cream btn-sheen" id="watersHeroAddBtn" data-active-water="mango-maracuya">
+                  + Agregar al Pedido ($25 MXN)
+                </button>
+                <button type="button" class="btn-direct-wa-sm btn-direct-wa-stage" id="watersHeroWaBtn" data-active-water="mango-maracuya">
+                  Pedir este sabor por WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-bar filter-bar-waters" role="tablist" aria-label="Filtrar colecciones de aguas">
+          <button type="button" class="filter-btn filter-btn-light active" data-water-filter="all">Los 12 Sabores</button>
+          <button type="button" class="filter-btn filter-btn-light" data-water-filter="frutal">Frutal &amp; Antioxidante (5)</button>
+          <button type="button" class="filter-btn filter-btn-light" data-water-filter="botanica">Botánica con Chía (2)</button>
+          <button type="button" class="filter-btn filter-btn-light" data-water-filter="cremosa">Cremosa &amp; Signature (5)</button>
+        </div>
+
+        <div class="waters-grid" id="watersGrid">
+          <!-- Renderizado dinámicamente por app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMOCIONES INTELIGENTES: WORKDAY DÚOS, GREEN PASS & RECOMPENSAS -->
+    <section class="section section-cream" id="promos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Conveniencia Ejecutiva sin Remates Baratos</span>
+          <h2 class="section-title">Green Pass Semanal, Office Drop &amp; Club</h2>
+          <p class="section-lead">
+            En lugar de promociones improvisadas, diseñamos planes y beneficios reales para simplificar tus comidas laborales de toda la semana.
+          </p>
+        </div>
+
+        <!-- RESUMEN WORKDAY DÚOS -->
+        <div class="duos-showcase-box">
+          <div class="duos-showcase-head">
+            <div>
+              <h3>Resumen de Workday Dúos</h3>
+              <p>Cualquier platillo principal acompañado de tu Agua de Sabor 500 ml favorita (ahorras $5 frente a compra individual).</p>
+            </div>
+            <span class="price-pill">$70 – $105 MXN</span>
+          </div>
+          <div class="duos-tiles-grid">
+            <div class="duo-summary-tile">
+              <h4>Dúo Bowl</h4>
+              <p>Bowl Pollo, Pavo o Atún + Agua 500 ml</p>
+              <span class="price-pill price-pill-sm">$85 MXN</span>
+            </div>
+            <div class="duo-summary-tile">
+              <h4>Dúo Chapata</h4>
+              <p>Chapata Pavo o Pollo + Agua 500 ml</p>
+              <span class="price-pill price-pill-sm">$85 MXN</span>
+            </div>
+            <div class="duo-summary-tile">
+              <h4>Dúo Club</h4>
+              <p>Club 4/4 + Papas + Agua 500 ml</p>
+              <span class="price-pill price-pill-sm">$105 MXN</span>
+            </div>
+            <div class="duo-summary-tile">
+              <h4>Dúo Tacos</h4>
+              <p>Orden Tacos Dorados + Agua 500 ml</p>
+              <span class="price-pill price-pill-sm">$70 MXN</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUSCRIPCIONES GREEN PASS SEMANAL -->
+        <div class="greenpass-grid">
+          <article class="promo-card promo-card-featured">
+            <div class="promo-card-top">
+              <span class="promo-tag">Suscripción Lun–Jue</span>
+              <span class="price-pill">$330 MXN</span>
+            </div>
+            <h3>Green Pass Semanal — Plan 4 Días</h3>
+            <p>
+              Reserva tu semana el domingo o lunes antes de las 10:00 h. Incluye <strong>1 Bowl o Chapata diaria + 1 Agua de Sabor 500 ml</strong> durante 4 días, con entrega puntual en una misma ventana horaria en tu oficina o consultorio.
+            </p>
+            <button type="button" class="btn btn-primary btn-full add-plan-btn" data-plan-id="green-pass-4">
+              Agregar Green Pass 4 Días ($330 MXN)
+            </button>
+          </article>
+
+          <article class="promo-card promo-card-featured promo-card-dark">
+            <div class="promo-card-top">
+              <span class="promo-tag promo-tag-gold">Suscripción Lun–Vie • Más Popular</span>
+              <span class="price-pill price-pill-cream">$425 MXN</span>
+            </div>
+            <h3>Green Pass Semanal — Plan 5 Días</h3>
+            <p>
+              Semana laboral resuelta por completo: <strong>4 Bowls o Chapatas (Lun–Jue) + 1 Club Sándwich Completo el viernes + 5 Aguas de Sabor Naturales 500 ml</strong> con prioridad en sabores Signature (<em>Taro, Horchata Matcha o Café</em>).
+            </p>
+            <button type="button" class="btn btn-cream btn-full add-plan-btn" data-plan-id="green-pass-5">
+              Agregar Green Pass 5 Días ($425 MXN)
+            </button>
+          </article>
+        </div>
+
+        <!-- OFFICE DROP, MIÉRCOLES & BITE CLUB -->
+        <div class="perks-trio-grid" id="oficinas">
+          <article class="perk-card">
+            <span class="perk-badge">Pedidos en Grupo</span>
+            <h3>Office Drop</h3>
+            <p>
+              Cuando <strong>3 o más personas</strong> de una misma oficina, clínica, banco o despacho piden juntas en una sola entrega reciben <strong>envío sin costo</strong>. ¡Y a partir de <strong>4 Dúos en el mismo pedido va 1 Agua de Sabor extra de cortesía</strong>!
+            </p>
+          </article>
+
+          <article class="perk-card">
+            <span class="perk-badge">Dinámica Semanal</span>
+            <h3>Miércoles de Ingrediente Estrella</h3>
+            <p>
+              Cada miércoles destacamos un ingrediente protagonista (<em>Aguacate Hass extra o mezcla fresca de temporada</em>) o degustación de un sabor Signature sin costo adicional al pedir tu Workday Dúo del día.
+            </p>
+          </article>
+
+          <article class="perk-card">
+            <span class="perk-badge">Programa de Lealtad</span>
+            <h3>Bite Club (Tarjeta de 6 Sellos)</h3>
+            <p>
+              Recibe tu tarjeta física minimalista dentro de la bolsa (o lleva tu registro en WhatsApp): al acumular <strong>6 almuerzos</strong>, el <strong>7º Bowl, Chapata o 2 Aguas 500 ml</strong> van totalmente por cuenta de Green Bite.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA PUBLICITARIA NANO BANANA CON VISOR PANTALLA COMPLETA -->
+    <section class="section section-sand" id="campana">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Campaña Visual 75% Editorial + 25% Floating</span>
+          <h2 class="section-title">Pósters Publicitarios Green Bite</h2>
+          <p class="section-lead">
+            Toca cualquier cartel publicitario creado con Nano Banana para abrirlo en pantalla completa, inspeccionar cada detalle y compartirlo.
+          </p>
+        </div>
+
+        <div class="posters-gallery-grid" id="postersGalleryGrid">
+          <!-- Renderizado dinámicamente por app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ADN DE MARCA, ENVASES REALES, COBERTURA EN PACHUCA Y CATÁLOGOS PDF -->
+    <section class="section section-cream" id="adn">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Identidad Quiet Wellness • Envases Reales</span>
+          <h2 class="section-title">Mismos envases prácticos, presentación de nivel editorial</h2>
+          <p class="section-lead">
+            Conservamos al 100% los envases reales de Green Bite que ya conoces por su comodidad, elevando cada entrega mediante orden, limpieza e higiene visible.
+          </p>
+        </div>
+
+        <div class="packaging-grid">
+          <article class="pack-card">
+            <img src="assets/bowl_editorial.jpg" alt="Bowl redondo PET cristal con aderezo por fuera">
+            <div class="pack-body">
+              <h3>Bowls PET Cristal</h3>
+              <p>Base verde fresca, proteína y aguacate Hass arriba y pasta medida a un lado. El vasito cerrado de aderezo <strong>siempre viaja por fuera del bowl</strong>.</p>
+            </div>
+          </article>
+
+          <article class="pack-card">
+            <img src="assets/chapata_editorial.jpg" alt="Chapata artesanal en tabla mitad mármol y mitad madera">
+            <div class="pack-body">
+              <h3>Chapatas Corte Diagonal</h3>
+              <p>Pan artesanal partido al centro mostrando láminas limpias de pavo o pollo, aguacate con pimienta y vegetales, envuelto en papel liso crema.</p>
+            </div>
+          </article>
+
+          <article class="pack-card">
+            <img src="assets/club_editorial.jpg" alt="Club Sándwich en clamshell verde olivo con papel liso crema">
+            <div class="pack-body">
+              <h3>Clamshell Verde Olivo</h3>
+              <p>Empaque cuadrado forrado con <strong>papel encerado liso color crema</strong> (sin cuadros de fonda) para lucir los 4 cuartos integrales y papas doradas.</p>
+            </div>
+          </article>
+
+          <article class="pack-card">
+            <img src="assets/tacos_editorial.jpg" alt="Tacos dorados crujientes con aguacate, panela y salsero aparte">
+            <div class="pack-body">
+              <h3>Contenedor Negro Liso</h3>
+              <p>Tacos dorados uniformes coronados con láminas frescas de aguacate Hass, queso panela, limón verde y <strong>salsa cremosa en salsero aparte</strong>.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- ZONAS PRIORITARIAS DE ENTREGA EN PACHUCA -->
+        <div class="zones-panel">
+          <div class="zones-text">
+            <span class="section-kicker">Rutas Diarias en Pachuca de Soto</span>
+            <h3>Cobertura Prioritaria para Oficinas y Clínicas</h3>
+            <div class="zones-grid">
+              <div class="zone-item">
+                <strong>Zona Plateada &amp; Galerías</strong>
+                <span>Torres corporativas, Via Dorada, bancos y oficinas.</span>
+              </div>
+              <div class="zone-item">
+                <strong>Valle de San Javier &amp; Blvd. Colosio</strong>
+                <span>Hospital Intermédica, torres médicas, clínicas y notarías.</span>
+              </div>
+              <div class="zone-item">
+                <strong>Av. Revolución &amp; Plaza Juárez</strong>
+                <span>Despachos jurídicos, dependencias y La Beneficencia Española.</span>
+              </div>
+              <div class="zone-item">
+                <strong>Río de las Avenidas &amp; Eje Universitario</strong>
+                <span>Centro Minero, Venta Prieta, UAEH y Tec Campus Hidalgo.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DESCARGA DE CATÁLOGOS PDF -->
+        <div class="downloads-box" id="catalogos">
+          <div>
+            <span class="section-kicker">Material Descargable Oficial</span>
+            <h3>Lleva los Catálogos de Green Bite en PDF</h3>
+            <p>Compártelos directo por WhatsApp o consúltalos sin conexión desde tu teléfono o computadora.</p>
+          </div>
+          <div class="downloads-actions">
+            <a class="btn btn-primary" href="Green_Bite_Catalogo_Publicitario_Nano.pdf" target="_blank" rel="noopener">
+              Abrir Catálogo Publicitario (PDF)
+            </a>
+            <a class="btn btn-outline" href="Green_Bite_Catalogo_Oficial.pdf" target="_blank" rel="noopener">
+              Abrir Catálogo Estructurado (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ ACCORDION) CON LETRA GRANDE -->
+    <section class="section section-sand" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Respuestas Claras Antes de Pedir</span>
+          <h2 class="section-title">Preguntas Frecuentes en Pachuca</h2>
+        </div>
+
+        <div class="faq-list" id="faqList">
+          <article class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="true">
+              <span>1. ¿En qué horarios reciben pedidos y cómo funciona la entrega?</span>
+              <span class="faq-icon" aria-hidden="true">−</span>
+            </button>
+            <div class="faq-answer open">
+              <p>Atendemos pedidos directos de lunes a viernes por WhatsApp al <strong>771 220 7194</strong>. Si reservas por la mañana o mediante <strong>Green Pass</strong>, coordinamos una ventana horaria fija para tu consultorio, oficina o domicilio en Pachuca.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>2. ¿Qué zonas cubren y cómo obtengo envío gratis con Office Drop?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Entregamos principalmente en Zona Plateada, Galerías, Valle de San Javier, Hospital Intermédica, Blvd. Colosio, Av. Revolución, Plaza Juárez, La Bene, Centro Minero, UAEH y Tec. Si <strong>3 o más personas</strong> de un mismo punto piden juntas, el envío es gratis; y con <strong>4 o más Dúos</strong> va 1 Agua 500 ml de cortesía.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>3. ¿El aderezo de los bowls viene encima de la lechuga o aparte?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Siempre viaja <strong>por fuera del bowl</strong> en su vasito cerrado dentro de la bolsa (nunca tocando la lechuga ni aplastando el aguacate), al igual que la salsa de los tacos dorados y los dos aderezos del Club Sándwich.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>4. ¿Las Aguas de Sabor Naturales de 500 ml ($25) contienen azúcar?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Sí, con total transparencia: están hechas con <strong>base natural de fruta o semilla, azúcar y agua purificada (500 ml) y sin conservadores artificiales</strong>. Son ideales para disfrutar bien frías agitando la botella antes de tomar.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>5. ¿Qué incluye el Green Pass Semanal ($330 y $425) y la tarjeta Bite Club?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>El <strong>Green Pass 4 Días ($330 MXN)</strong> cubre Lun–Jue (Bowl o Chapata + Agua 500 ml diaria) y el <strong>Plan 5 Días ($425 MXN)</strong> suma además el Club Sándwich Completo del viernes. Adicionalmente, con tu tarjeta <strong>Bite Club</strong> de 6 sellos, el 7º Bowl, Chapata o 2 Aguas van gratis.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER EDITORIAL -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand-lockup footer-brand">
+          <img class="brand-logo" src="assets/logo.jpeg" alt="Logotipo Green Bite">
+          <div>
+            <span class="brand-name footer-brand-name">Green Bite</span>
+            <p class="footer-slogan"><em>Tu comida, más verde.</em></p>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Alimentación práctica de calidad editorial para la jornada diaria en Pachuca de Soto, Hidalgo. Ingredientes reales, envases impecables y 12 aguas naturales.
+        </p>
+      </div>
+
+      <div class="footer-contact-card">
+        <span class="footer-kicker">Pedidos y Suscripciones Directas</span>
+        <a class="footer-phone" href="https://wa.me/527712207194?text=Hola%20Green%20Bite,%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">
+          WhatsApp: 771 220 7194
+        </a>
+        <p class="footer-zones">Pachuca de Soto • Zona Plateada • San Javier • Intermédica • Av. Revolución • Centro Minero</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE PERMANENTE WHATSAPP (LAPTOP / DESKTOP) -->
+  <button type="button" class="floating-wa-btn js-smart-wa-cta" id="floatingWaOrderBtn" aria-label="Ordenar directo por WhatsApp 771 220 7194">
+    <span class="floating-wa-pulse" aria-hidden="true"></span>
+    <span class="floating-wa-icon" aria-hidden="true">
+      <svg class="wa-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.8 14.08c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.15.11-1.85-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.84 2.06.92 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.07 1.31 2.37 1.46.3.15.47.12.65-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.96.3.15.5.22.57.35.07.12.07.72-.17 1.4z"/></svg>
+    </span>
+    <span class="floating-wa-copy">
+      <strong id="floatingWaTitle">Ordenar por WhatsApp</strong>
+      <small id="floatingWaSub">771 220 7194 • Envíos Pachuca</small>
+    </span>
+  </button>
+
+  <!-- BARRA FIJA INFERIOR PARA CELULAR Y TABLET -->
+  <div class="mobile-sticky-bar" id="mobileStickyBar">
+    <button type="button" class="sticky-cart-summary" id="stickyCartTrigger" aria-label="Ver mi pedido">
+      <span>🛍️ <strong id="stickyCount">0</strong> • <strong id="stickyTotal">$0 MXN</strong></span>
+    </button>
+    <button type="button" class="sticky-wa-btn js-smart-wa-cta" id="stickyWaBtn">
+      <svg class="wa-svg wa-svg-sm" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.8 14.08c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.15.11-1.85-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.84 2.06.92 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.07 1.31 2.37 1.46.3.15.47.12.65-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.96.3.15.5.22.57.35.07.12.07.72-.17 1.4z"/></svg>
+      <span>Pedir 771 220 7194</span>
+    </button>
+  </div>
+
+  <!-- DRAWER LATERAL DEL CARRITO DE PEDIDOS -->
+  <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+    <div class="cart-drawer-head">
+      <div>
+        <h2 id="cartDrawerTitle">Tu Pedido Green Bite</h2>
+        <p>Envío directo a WhatsApp 771 220 7194</p>
+      </div>
+      <button type="button" class="drawer-close" id="closeCartBtn" aria-label="Cerrar carrito">✕</button>
+    </div>
+
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- Renderizado dinámicamente por app.js -->
+    </div>
+
+    <div class="cart-drawer-foot">
+      <div class="cart-form-group">
+        <label for="deliveryZoneSelect">Zona de entrega en Pachuca</label>
+        <select id="deliveryZoneSelect">
+          <option value="Zona Plateada / Galerías">Zona Plateada / Galerías</option>
+          <option value="Valle de San Javier / Blvd. Colosio / Intermédica">Valle de San Javier / Colosio / Intermédica</option>
+          <option value="Av. Revolución / Plaza Juárez / Centro">Av. Revolución / Plaza Juárez / Centro</option>
+          <option value="Río de las Avenidas / Venta Prieta / Centro Minero">Río de las Avenidas / Centro Minero</option>
+          <option value="UAEH / Tec de Monterrey Campus Hidalgo">UAEH / Tec Campus Hidalgo</option>
+          <option value="Otra zona en Pachuca">Otra zona en Pachuca</option>
+        </select>
+      </div>
+
+      <div class="cart-form-group">
+        <label for="orderNotesInput">Indicaciones o nombre de oficina/consultorio</label>
+        <input type="text" id="orderNotesInput" placeholder="Ej. Aderezo ranch aparte, Torre B Piso 3">
+      </div>
+
+      <div class="cart-total-row">
+        <span>Total estimado</span>
+        <strong id="cartTotalDisplay">$0 MXN</strong>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-full btn-lg" id="sendWhatsAppOrderBtn">
+        Enviar Pedido por WhatsApp (771 220 7194)
+      </button>
+      <button type="button" class="btn-link-clear" id="clearCartBtn">Vaciar pedido</button>
+    </div>
+  </aside>
+
+  <!-- VISOR LIGHTBOX PARA PÓSTERS PUBLICITARIOS -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption" aria-hidden="true">
+    <div class="lightbox-dialog">
+      <button type="button" class="lightbox-close" id="closeLightboxBtn" aria-label="Cerrar visor">✕</button>
+      <div class="lightbox-stage">
+        <button type="button" class="lightbox-nav" id="prevLightboxBtn" aria-label="Póster anterior">‹</button>
+        <img id="lightboxImg" src="assets/portada_nano.jpg" alt="Póster publicitario Green Bite">
+        <button type="button" class="lightbox-nav" id="nextLightboxBtn" aria-label="Siguiente póster">›</button>
+      </div>
+      <div class="lightbox-caption" id="lightboxCaption">Portada Oficial Nano Banana • WhatsApp 771 220 7194</div>
+    </div>
+  </div>
+
+  <!-- NOTIFICACIÓN TOAST -->
+  <div class="toast-notice" id="toastNotice" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
