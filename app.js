@@ -198,7 +198,7 @@
   }
 
   function renderDuoBuilder() {
-    const duoFoods = FOOD_ITEMS.filter(item => item.id !== 'pasta-cremosa');
+    const duoFoods = FOOD_ITEMS;
     els.duoDishOptions.innerHTML = duoFoods.map(item => `
       <button type="button" class="duo-choice-btn ${item.id === selectedDuoFoodId ? 'active' : ''}" data-duo-food="${item.id}">
         <strong>${item.shortName}</strong>
@@ -215,8 +215,9 @@
 
     const food = FOOD_ITEMS.find(f => f.id === selectedDuoFoodId);
     const flavor = WATER_FLAVORS.find(w => w.id === selectedDuoFlavorId);
+    const regularSum = food.priceSolo + 25;
     els.duoBuilderPrice.textContent = `$${food.priceDuo} MXN`;
-    els.duoSelectedSummary.innerHTML = `Seleccionado: <strong>Dúo ${food.shortName} + Agua ${flavor.name}</strong>`;
+    els.duoSelectedSummary.innerHTML = `Seleccionado: <strong>Dúo ${food.shortName} + Agua ${flavor.name}</strong> <span class="duo-summary-math">(Suelto: $${food.priceSolo} + $25 = <s>$${regularSum}</s> → Ahorras $5)</span>`;
     els.addBuiltDuoBtn.textContent = `+ Agregar Workday Dúo ($${food.priceDuo} MXN)`;
   }
 
@@ -357,24 +358,118 @@
     window.open(url, '_blank', 'noopener');
   }
 
+  function inferRegularUnitPrice(item) {
+    if (typeof item.regularPrice === 'number') return item.regularPrice;
+    if (item.key === 'green-pass-4') return 360;
+    if (item.key === 'green-pass-5') return 470;
+    if (item.key.includes('__duo__')) return item.price + 5;
+    return item.price;
+  }
+
+  function calculateCartAudit(items) {
+    let totalQty = 0;
+    let rawSum = 0;
+    let regularSubtotal = 0;
+    let soloFoodsCount = 0;
+    let soloWatersCount = 0;
+    let explicitDuosCount = 0;
+    let planMealsCount = 0;
+
+    items.forEach(item => {
+      const q = item.qty;
+      totalQty += q;
+      rawSum += item.price * q;
+      regularSubtotal += inferRegularUnitPrice(item) * q;
+
+      if (item.key.endsWith('__solo')) {
+        soloFoodsCount += q;
+      } else if (item.key.startsWith('water__')) {
+        soloWatersCount += q;
+      } else if (item.key.includes('__duo__')) {
+        explicitDuosCount += q;
+      } else if (item.key === 'green-pass-4') {
+        planMealsCount += 4 * q;
+      } else if (item.key === 'green-pass-5') {
+        planMealsCount += 5 * q;
+      }
+    });
+
+    const autoPairedDuos = Math.min(soloFoodsCount, soloWatersCount);
+    const autoDuoDiscount = autoPairedDuos * 5;
+    const finalTotal = Math.max(0, rawSum - autoDuoDiscount);
+    const totalSavings = Math.max(0, regularSubtotal - finalTotal);
+    const explicitSavings = Math.max(0, totalSavings - autoDuoDiscount);
+    const totalMeals = explicitDuosCount + soloFoodsCount + planMealsCount;
+    const totalDuos = explicitDuosCount + autoPairedDuos;
+    const freeShipping = totalMeals >= 3;
+    const freeWaters = Math.floor(totalDuos / 4);
+
+    return {
+      totalQty,
+      rawSum,
+      regularSubtotal,
+      autoPairedDuos,
+      autoDuoDiscount,
+      explicitSavings,
+      totalSavings,
+      finalTotal,
+      totalMeals,
+      totalDuos,
+      freeShipping,
+      freeWaters
+    };
+  }
+
   function renderCart() {
-    const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
-    const totalPrice = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+    const audit = calculateCartAudit(cart);
+    const { totalQty, finalTotal, regularSubtotal, totalSavings, explicitSavings, autoPairedDuos, autoDuoDiscount, totalMeals, freeShipping, freeWaters } = audit;
 
     els.navCartCount.textContent = String(totalQty);
     els.stickyCount.textContent = String(totalQty);
-    els.stickyTotal.textContent = `$${totalPrice} MXN`;
-    els.cartTotalDisplay.textContent = `$${totalPrice} MXN`;
+    els.stickyTotal.textContent = `$${finalTotal} MXN`;
+    els.cartTotalDisplay.textContent = `$${finalTotal} MXN`;
 
     const floatTitle = document.getElementById('floatingWaTitle');
     const floatSub = document.getElementById('floatingWaSub');
     if (floatTitle && floatSub) {
       if (totalQty > 0) {
-        floatTitle.textContent = `Enviar Pedido ($${totalPrice} MXN)`;
-        floatSub.textContent = `${totalQty} artículo${totalQty > 1 ? 's' : ''} • WhatsApp 771 220 7194`;
+        floatTitle.textContent = `Enviar Pedido ($${finalTotal} MXN)`;
+        floatSub.textContent = totalSavings > 0
+          ? `${totalQty} art. • Ahorras $${totalSavings} MXN`
+          : `${totalQty} artículo${totalQty > 1 ? 's' : ''} • WhatsApp 771 220 7194`;
       } else {
         floatTitle.textContent = 'Ordenar por WhatsApp';
         floatSub.textContent = '771 220 7194 • Envíos Pachuca';
+      }
+    }
+
+    const auditBox = document.getElementById('cartAuditBox');
+    if (auditBox) {
+      if (totalQty === 0) {
+        auditBox.innerHTML = '';
+        auditBox.classList.remove('visible');
+      } else {
+        const lines = [
+          `<div class="cart-audit-line"><span>Valor individual (${totalQty} ${totalQty === 1 ? 'artículo' : 'artículos'}):</span><span>$${regularSubtotal} MXN</span></div>`
+        ];
+        if (explicitSavings > 0) {
+          lines.push(`<div class="cart-audit-line is-savings"><span>Ahorro en Dúos / Green Pass:</span><span>-$${explicitSavings} MXN</span></div>`);
+        }
+        if (autoDuoDiscount > 0) {
+          lines.push(`<div class="cart-audit-line is-savings"><span>Descuento Auto-Dúo (${autoPairedDuos} par${autoPairedDuos > 1 ? 'es' : ''} sueltos):</span><span>-$${autoDuoDiscount} MXN</span></div>`);
+        }
+        const perks = [];
+        if (freeShipping) {
+          perks.push(`✓ Envío sin costo Office Drop (${totalMeals} comidas en pedido)`);
+        } else if (totalMeals > 0 && totalMeals < 3) {
+          const faltan = 3 - totalMeals;
+          perks.push(`• ${faltan === 1 ? 'Falta 1 comida' : `Faltan ${faltan} comidas`} para envío gratis Office Drop`);
+        }
+        if (freeWaters > 0) {
+          perks.push(`🎁 Incluye +${freeWaters} Agua 500 ml de cortesía (4+ Dúos)`);
+        }
+        auditBox.innerHTML = `${lines.join('')}${perks.length ? `<div class="cart-audit-perks">${perks.map(p => `<span>${p}</span>`).join('')}</div>` : ''}`;
+        auditBox.classList.add('visible');
       }
     }
 
@@ -382,7 +477,7 @@
       els.cartItemsList.innerHTML = `
         <div class="cart-empty">
           <strong>Tu pedido está vacío.</strong><br>
-          Elige un Bowl, Chapata, Club Sándwich, Tacos Dorados o tu Agua de Sabor favorita para armar tu mensaje automático por WhatsApp.
+          Elige un Bowl, Chapata, Club Sándwich, Tacos Dorados, Pasta o tu Agua de Sabor favorita para armar tu mensaje automático por WhatsApp.
         </div>
       `;
       return;
@@ -437,7 +532,7 @@
       return;
     }
 
-    const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+    const audit = calculateCartAudit(cart);
     const zone = els.zoneSelect.value;
     const notes = els.notesInput.value.trim();
 
@@ -452,7 +547,19 @@
     });
 
     lines.push('');
-    lines.push(`*Total estimado:* $${total} MXN`);
+    if (audit.autoDuoDiscount > 0) {
+      lines.push(`*Descuento Auto-Dúo (${audit.autoPairedDuos} par):* -$${audit.autoDuoDiscount} MXN`);
+    }
+    if (audit.totalSavings > 0) {
+      lines.push(`*Valor regular suelto:* $${audit.regularSubtotal} MXN (Ahorro total: $${audit.totalSavings} MXN)`);
+    }
+    if (audit.freeShipping) {
+      lines.push('*Beneficio Office Drop:* Envío sin costo (3+ comidas)');
+    }
+    if (audit.freeWaters > 0) {
+      lines.push(`*Cortesía Office Drop:* +${audit.freeWaters} Agua 500 ml gratis (4+ Dúos)`);
+    }
+    lines.push(`*Total final a pagar:* $${audit.finalTotal} MXN`);
     lines.push(`*Zona de entrega:* ${zone}`);
     if (notes) {
       lines.push(`*Indicaciones:* ${notes}`);
@@ -541,7 +648,8 @@
         key: `${food.id}__duo__${flavor.name}`,
         title: `Dúo ${food.name}`,
         detail: `Incluye Agua 500 ml: ${flavor.name}`,
-        price: food.priceDuo
+        price: food.priceDuo,
+        regularPrice: food.priceSolo + 25
       });
     });
 
@@ -616,14 +724,16 @@
             key: `${food.id}__duo__${flavor}`,
             title: `Dúo ${food.name}`,
             detail: `Incluye Agua 500 ml: ${flavor}`,
-            price: food.priceDuo
+            price: food.priceDuo,
+            regularPrice: food.priceSolo + 25
           });
         } else {
           addToCart({
             key: `${food.id}__solo`,
             title: food.name,
             detail: 'Individual (aderezo/salsa aparte)',
-            price: food.priceSolo
+            price: food.priceSolo,
+            regularPrice: food.priceSolo
           });
         }
         flashButtonAdded(addBtn, '+ Agregar a mi Pedido');

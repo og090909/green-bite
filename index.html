@@ -315,22 +315,32 @@
             <div class="duo-summary-tile">
               <h4>Dúo Bowl</h4>
               <p>Bowl Pollo, Pavo o Atún + Agua 500 ml</p>
+              <span class="duo-math-note">Suelto: $65 + $25 = $90 → Ahorras $5</span>
               <span class="price-pill price-pill-sm">$85 MXN</span>
             </div>
             <div class="duo-summary-tile">
               <h4>Dúo Chapata</h4>
               <p>Chapata Pavo o Pollo + Agua 500 ml</p>
+              <span class="duo-math-note">Suelto: $65 + $25 = $90 → Ahorras $5</span>
               <span class="price-pill price-pill-sm">$85 MXN</span>
             </div>
             <div class="duo-summary-tile">
               <h4>Dúo Club</h4>
               <p>Club 4/4 + Papas + Agua 500 ml</p>
+              <span class="duo-math-note">Suelto: $85 + $25 = $110 → Ahorras $5</span>
               <span class="price-pill price-pill-sm">$105 MXN</span>
             </div>
             <div class="duo-summary-tile">
               <h4>Dúo Tacos</h4>
               <p>Orden Tacos Dorados + Agua 500 ml</p>
+              <span class="duo-math-note">Suelto: $50 + $25 = $75 → Ahorras $5</span>
               <span class="price-pill price-pill-sm">$70 MXN</span>
+            </div>
+            <div class="duo-summary-tile">
+              <h4>Dúo Pasta</h4>
+              <p>Pasta Cremosa Comfort + Agua 500 ml</p>
+              <span class="duo-math-note">Suelto: $65 + $25 = $90 → Ahorras $5</span>
+              <span class="price-pill price-pill-sm">$85 MXN</span>
             </div>
           </div>
         </div>
@@ -346,6 +356,9 @@
             <p>
               Reserva tu semana el domingo o lunes antes de las 10:00 h. Incluye <strong>1 Bowl o Chapata diaria + 1 Agua de Sabor 500 ml</strong> durante 4 días, con entrega puntual en una misma ventana horaria en tu oficina o consultorio.
             </p>
+            <div class="promo-math-audit">
+              <strong>Cuenta auditada:</strong> 4 platillos ($260) + 4 aguas ($100) = <s>$360 MXN</s> → <strong>Pagas $330 MXN (Ahorras $30 MXN)</strong>
+            </div>
             <button type="button" class="btn btn-primary btn-full add-plan-btn" data-plan-id="green-pass-4">
               Agregar Green Pass 4 Días ($330 MXN)
             </button>
@@ -360,6 +373,9 @@
             <p>
               Semana laboral resuelta por completo: <strong>4 Bowls o Chapatas (Lun–Jue) + 1 Club Sándwich Completo el viernes + 5 Aguas de Sabor Naturales 500 ml</strong> con prioridad en sabores Signature (<em>Taro, Horchata Matcha o Café</em>).
             </p>
+            <div class="promo-math-audit promo-math-audit-dark">
+              <strong>Cuenta auditada:</strong> 4 platillos ($260) + 1 Club ($85) + 5 aguas ($125) = <s>$470 MXN</s> → <strong>Pagas $425 MXN (Ahorras $45 MXN)</strong>
+            </div>
             <button type="button" class="btn btn-cream btn-full add-plan-btn" data-plan-id="green-pass-5">
               Agregar Green Pass 5 Días ($425 MXN)
             </button>
@@ -647,8 +663,12 @@
         <input type="text" id="orderNotesInput" placeholder="Ej. Aderezo ranch aparte, Torre B Piso 3">
       </div>
 
+      <div class="cart-audit-box" id="cartAuditBox" aria-live="polite">
+        <!-- Desglose auditado renderizado por app.js -->
+      </div>
+
       <div class="cart-total-row">
-        <span>Total estimado</span>
+        <span>Total final a pagar</span>
         <strong id="cartTotalDisplay">$0 MXN</strong>
       </div>
 
